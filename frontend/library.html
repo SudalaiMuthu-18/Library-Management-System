@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Library Management System</title>
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<div class="container">
+    <h1>📚 Library Management</h1>
+
+    <div class="card">
+
+        <div class="inputs">
+            <input type="number" id="bookId" placeholder="Book ID">
+            <input type="text" id="bookName" placeholder="Book Name">
+            <input type="text" id="author" placeholder="Author">
+        </div>
+
+        <div class="buttons">
+            <button class="add" onclick="addBook()">Add</button>
+            <button class="view" onclick="viewBooks()">View</button>
+            <button class="search" onclick="searchBook()">Search</button>
+            <button class="issue" onclick="issueBook()">Issue</button>
+            <button class="return" onclick="returnBook()">Return</button>
+        </div>
+
+    </div>
+
+    <div id="output" class="output"></div>
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
