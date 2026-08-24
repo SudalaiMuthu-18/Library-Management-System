@@ -1,0 +1,27 @@
+# React
+frontend/node_modules/
+frontend/dist/
+
+# Spring Boot / Maven
+backend/target/
+*.class
+
+# Old Java compiled output
+backend/out/
+
+# Local database files
+*.db
+
+# IDE
+.idea/
+.vscode/
+*.iml
+
+# Environment variables
+.env
+.env.*
+!.env.example
+
+# OS
+.DS_Store
+Thumbs.db
