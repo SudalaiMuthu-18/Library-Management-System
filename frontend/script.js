@@ -2,8 +2,9 @@
 //   LIBRARY MANAGEMENT SYSTEM — Frontend Controller (API Integration)
 // ═══════════════════════════════════════════════════════
 
-const API_BASE = window.location.protocol.startsWith("file") ? "http://localhost:8080/api" : "/api";
-let currentDeleteCallback = null;
+const API_BASE = window.location.protocol.startsWith("file")
+    ? "http://localhost:8080/api"
+    : "/api"; let currentDeleteCallback = null;
 let searchBookTimeout = null;
 let searchMemberTimeout = null;
 
@@ -118,9 +119,9 @@ function showConfirm(message, onConfirm) {
     document.getElementById("confirmMessage").textContent = message;
     const modal = document.getElementById("confirmModal");
     modal.classList.remove("hidden");
-    
+
     currentDeleteCallback = onConfirm;
-    
+
     // Wire button
     document.getElementById("confirmOkBtn").onclick = () => {
         if (currentDeleteCallback) currentDeleteCallback();
@@ -142,7 +143,7 @@ async function loadDashboardStats() {
         const res = await fetch(`${API_BASE}/stats`);
         if (!res.ok) throw new Error("Could not load statistics.");
         const data = await res.json();
-        
+
         document.getElementById("statTotalBooksVal").textContent = data.totalBooks;
         document.getElementById("statAvailableVal").textContent = data.availableBooks;
         document.getElementById("statMembersVal").textContent = data.totalMembers;
@@ -158,7 +159,7 @@ async function loadDashboardIssued() {
         const res = await fetch(`${API_BASE}/issued`);
         if (!res.ok) throw new Error();
         const data = await res.json();
-        
+
         if (data.length === 0) {
             wrap.innerHTML = `<div class="loading-row">No books currently issued. Great job!</div>`;
             return;
@@ -177,7 +178,7 @@ async function loadDashboardIssued() {
                 </thead>
                 <tbody>
         `;
-        
+
         data.slice(0, 5).forEach(row => {
             html += `
                 <tr>
@@ -189,7 +190,7 @@ async function loadDashboardIssued() {
                 </tr>
             `;
         });
-        
+
         html += `</tbody></table>`;
         wrap.innerHTML = html;
     } catch (e) {
@@ -218,10 +219,10 @@ async function loadBooks(query = "") {
 
         let html = "";
         data.forEach(book => {
-            const statusBadge = book.available > 0 
+            const statusBadge = book.available > 0
                 ? `<span class="badge badge-success">Available</span>`
                 : `<span class="badge badge-danger">Out of Stock</span>`;
-            
+
             html += `
                 <tr>
                     <td><b>#${book.bookId}</b></td>
@@ -258,7 +259,7 @@ function debounceBookSearch() {
 function openBookModal(book = null) {
     const overlay = document.getElementById("bookModal");
     const title = document.getElementById("bookModalTitle");
-    
+
     // Clear inputs
     document.getElementById("editBookId").value = "";
     document.getElementById("bookTitle").value = "";
