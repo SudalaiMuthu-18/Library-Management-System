@@ -1,7 +1,7 @@
 // Token storage key (must match AuthContext)
 const TOKEN_KEY = 'library_jwt_token';
 
-const API_BASE = 'http://localhost:8080/api';
+const API_BASE = `${import.meta.env.VITE_API_URL || 'http://localhost:8080'}/api`;
 
 /** Get stored JWT token from localStorage or sessionStorage */
 function getToken() {

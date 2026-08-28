@@ -32,7 +32,7 @@ export function AuthProvider({ children }) {
     setError(null);
 
     try {
-      const API_BASE = 'http://localhost:8080/api';
+      const API_BASE = `${import.meta.env.VITE_API_URL || 'http://localhost:8080'}/api`;
       const res = await fetch(`${API_BASE}/auth/login`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
